@@ -1,6 +1,3 @@
-# halostats
-Repo for downloading halo game data from bungie.net before it is switched off 9th Feb 2021
-
 <h1 style="font-weight:normal">
   Halo Stats
 </h1>
