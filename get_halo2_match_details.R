@@ -59,11 +59,11 @@ for(i in 1:length(ids)){
   #reorder columns
   carnage_table <- carnage_table[,c(12:9,2:8)]
   
-  if(i == 1001){
+  if(i == 1){
     match_details_df <- carnage_table
   }
   
-  if(i != 1001){
+  if(i != 1){
     match_details_df <- rbind(match_details_df,carnage_table)
   }
   Sys.sleep(3)
