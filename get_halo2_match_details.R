@@ -8,17 +8,27 @@ library(stringr)
 library(purrr)
 library(tidyr)
 
-gamertag <- 'The Truth 12'
+# enter gamertag
+gamertag <- ''
 gamertag_link <- gsub(' ','%20',toupper(gamertag))
 gamertag_for_file <- gsub(' ','_',tolower(gamertag))
 
-matches <- read.csv(paste0('data/sample_halo2_all_matches_',gamertag_for_file,'.csv'),stringsAsFactors = F)
+matches <- read.csv(paste0('data/halo2_all_matches_',gamertag_for_file,'.csv'),stringsAsFactors = F)
 
 ids <- matches$game_id
 
 for(i in 1:length(ids)){
   match_page <- paste0('http://halo.bungie.net/Stats/GameStatsHalo2.aspx?gameid=',ids[i],'&player=',gamertag_link)
-  match_html <- read_html(match_page)
+  
+  tryCatch({
+    match_html <- read_html(match_page)
+  }, 
+  error = function(error_condition) {
+    print("error in download, waiting 5 mins then trying again...")
+    Sys.sleep(5*60)
+    match_html <- read_html(match_page)
+  })
+  
   
   # take carnage pages - has more data
   carnage_table <- rvest::html_nodes(match_html,'.stats')[2] %>% html_table()
@@ -43,20 +53,17 @@ for(i in 1:length(ids)){
   carnage_table$player_rank <- ifelse(is.na(str_locate(carnage_table$Players,'\r\n')[1]),NA,str_extract(carnage_table$Players,'\\d+$'))
   carnage_table$player <-trimws(str_extract(carnage_table$Players,'^[A-z|\\d| |(|)]*'))
   
-  # Remove Player column
-  #carnage_table <- carnage_table %>% select(-"Player")
-  
   # add game id
   carnage_table$game_id <- ids[i]
   
   #reorder columns
   carnage_table <- carnage_table[,c(12:9,2:8)]
   
-  if(i == 1){
+  if(i == 1001){
     match_details_df <- carnage_table
   }
   
-  if(i != 1){
+  if(i != 1001){
     match_details_df <- rbind(match_details_df,carnage_table)
   }
   Sys.sleep(3)
@@ -64,5 +71,5 @@ for(i in 1:length(ids)){
   
 }
 
-write.csv(match_details_df,paste0('data/halo2_match_data_',gamertag_for_file,'.csv'), row.names = F)
+write.csv(match_details_df,paste0('data/halo2_match_data_',gamertag_for_file,'_02.csv'), row.names = F)
 
