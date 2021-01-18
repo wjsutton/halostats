@@ -41,7 +41,7 @@ for(i in 1:h2_total_pages){
   
   game_ids <- str_extract(table_links, "gameid=[0-9]+")
   game_ids <- game_ids[!is.na(game_ids)]
-  game_id_number <- substr(game_ids,8,16)
+  game_id_number <- substr(game_ids,8,nchar(game_ids))
   match_df$game_id <- game_id_number
   
   if(i == 1){
