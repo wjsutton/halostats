@@ -7,7 +7,7 @@ library(stringr)
 library(purrr)
 
 # Enter a gamertag
-gamertag <- 'Sam Jev'
+gamertag <- 'No Hibbert No'
 gamertag_link <- gsub(' ','%20',toupper(gamertag))
 gamertag_for_file <- gsub(' ','_',tolower(gamertag))
 
