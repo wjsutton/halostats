@@ -25,13 +25,14 @@ for(i in 1:nrow(all_matches)){
   }
 }
 
+
 write.csv(all_matches_df,'merged_data/all_matches.csv', row.names = F)
 
 match_details <- filter(to_merge,type == 'match_details')
 
 for(i in 1:nrow(match_details)){
   df <- read.csv(paste0('data/',match_details$name[i]),stringsAsFactors = F)
-  df$gamertag <- match_details$gamertag[i]
+  #df$gamertag <- match_details$gamertag[i]
   df$game <- match_details$game[i]
   
   if(i == 1){
@@ -42,5 +43,6 @@ for(i in 1:nrow(match_details)){
   }
 }
 
+match_details_df <- unique(match_details_df)
 write.csv(match_details_df,'merged_data/match_details.csv', row.names = F)
 
