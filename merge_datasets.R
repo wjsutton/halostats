@@ -44,5 +44,22 @@ for(i in 1:nrow(match_details)){
 }
 
 match_details_df <- unique(match_details_df)
+match_details_df$Score <- as.integer(match_details_df$Score)
+
+team_scores <- match_details_df %>% 
+  filter(!is.na(team)) %>%
+  group_by(game_id,game,team) %>%
+  summarise(team_score = sum(as.integer(Score), na.rm = TRUE),
+            team_kills = sum(as.integer(Kills), na.rm = TRUE))
+
+team_scores <- team_scores %>%
+  group_by(game_id,game) %>%
+  mutate(game_score = sum(team_score),
+         rank_team = rank(-team_score),
+         rank_kill = rank(-team_kills))
+
+team_scores$game_result <- ifelse(team_scores$game_score==0,team_scores$rank_kill,team_scores$rank_team)
+
+match_details_df <- team_scores
 write.csv(match_details_df,'merged_data/match_details.csv', row.names = F)
 
