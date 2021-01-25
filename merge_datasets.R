@@ -60,6 +60,6 @@ team_scores <- team_scores %>%
 
 team_scores$game_result <- ifelse(team_scores$game_score==0,team_scores$rank_kill,team_scores$rank_team)
 
-match_details_df <- team_scores
+match_details_df <- left_join(match_details_df,team_scores, by = c("game_id" = "game_id","game" = "game","team" = "team"))
 write.csv(match_details_df,'merged_data/match_details.csv', row.names = F)
 
