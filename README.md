@@ -23,3 +23,18 @@ Quick Link
 ### :a: About
 
 The Halo stats pages of [bungie.net](http://halo.bungie.net/stats/halo3/default.aspx?player=THE%20TRUTH%2012) will be switched off by 9th Feb 2021, so this repo contains code to download player games data from the site before it is lost.
+
+###  📈 Dashboard Notes
+
+The show the data I will be building a Tableau dashboard styled to look like the Halo Master Chief Collection Menu screens.
+
+Menu Backgrounds
+- Static versions [https://steamcommunity.com/workshop/filedetails/?id=1917398805](https://steamcommunity.com/workshop/filedetails/?id=1917398805)
+- Youtube versions [https://www.youtube.com/watch?v=80OD2SE5ad0&feature=emb_title](https://www.youtube.com/watch?v=80OD2SE5ad0&feature=emb_title)
+
+To embed a Youtube video in Tableau requires a url like the following:
+https://www.youtube.com/embed/wXj4Fz6mThg?autoplay=1&mute=1&controls=0
+i.e. /embed/Video ID?parameters
+
+Details of parameters can be sourced on the YouTube docs. Parameters can be fiddly so starting with a tutorial like [https://www.w3schools.com/html/html_youtube.asp](https://www.w3schools.com/html/html_youtube.asp) can help you get started.
+
