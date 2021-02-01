@@ -36,5 +36,19 @@ To embed a Youtube video in Tableau requires a url like the following:
 https://www.youtube.com/embed/wXj4Fz6mThg?autoplay=1&mute=1&controls=0
 i.e. /embed/Video ID?parameters
 
+As explained in Jeffrey Shaffer's blog post [Embedding YouTude Videos in Tableau](https://www.dataplusscience.com/EmbedYouTube2.html)
+
 Details of parameters can be sourced on the YouTube docs. Parameters can be fiddly so starting with a tutorial like [https://www.w3schools.com/html/html_youtube.asp](https://www.w3schools.com/html/html_youtube.asp) can help you get started.
 
+Full details of Youtube's parameters available on their [developer page](https://developers.google.com/youtube/player_parameters)
+
+
+### 📈 See the Dashboard 
+
+URL: [https://public.tableau.com/profile/wjsutton#!/vizhome/HaloTheLegacyMatchCollection/TitleScreen](https://public.tableau.com/profile/wjsutton#!/vizhome/HaloTheLegacyMatchCollection/TitleScreen)
+
+<div style="width: 300px; height:300px; overflow: hidden;margin: 0 10px 0 0">
+<a href="https://public.tableau.com/profile/wjsutton#!/vizhome/HaloTheLegacyMatchCollection/TitleScreen">
+<img src='https://github.com/wjsutton/halostats/blob/master/Dashboard%20Title%20Screen.png' style="width: 350px">
+</a>
+</div>
